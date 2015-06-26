@@ -1,5 +1,18 @@
 let isEven = require('is-even')
 
+function stringifyPixels (pixels) {
+
+	return pixels
+		.map(row =>
+			'| ' +
+			row
+				.map(pixel => (pixel === 0) ? '  ' : '█ ')
+				.join('') +
+			'|'
+		)
+		.join('\n')
+}
+
 export function render (
 		{
 			pixels = [],
@@ -8,16 +21,6 @@ export function render (
 	) {
 
 	if (scale === 1) {
-		return pixels
-			.map(row => {
-				return '| ' +
-				row
-				.map(pixel => {
-					return (pixel === 0) ? '  ' : '█ '
-				})
-				.join('') +
-				'|'
-			})
-			.join('\n')
+		return stringifyPixels(pixels)
 	}
 }
