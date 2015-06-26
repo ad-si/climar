@@ -58,5 +58,6 @@ console.timeEnd('test')
 
 
 console.log(render({
-	pixels
+	pixels,
+	scale: 0.5
 }))
