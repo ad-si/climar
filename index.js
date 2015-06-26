@@ -1,4 +1,5 @@
 import {rasterize} from '../source/index.js'
+import {render} from '../test/cliRenderer.js'
 
 console.time('test')
 
@@ -23,16 +24,7 @@ let pixels = rasterize({
 
 console.timeEnd('test')
 
-console.log(
+
+console.log(render({
 	pixels
-		.map(row => {
-			return '| ' +
-			row
-			.map(pixel => {
-				return (pixel === 0) ? '  ' : '█ '
-			})
-			.join('') +
-			'|'
-		})
-		.join('\n')
-)
+}))
