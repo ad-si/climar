@@ -1,16 +1,64 @@
 let isEven = require('is-even')
 
-function stringifyPixels (pixels) {
 
-	return pixels
-		.map(row =>
-			'| ' +
-			row
+function labelize (number) {
+	return String(number)
+		.split('')
+		.pop()
+}
+
+function stringifyPixels (
+		{
+			pixels = [],
+			printLabels = true
+		} = {}
+	) {
+
+	let outputString = '',
+		offset = '',
+		xLabels = '',
+		topBorder = '',
+		bottomBorder = '',
+		imageString = ''
+
+
+	if (printLabels) {
+		offset = '   '
+
+		xLabels = ' ' + pixels
+			.map((row, index) => labelize(index) + ' ')
+			.join('')  + '\n'
+	}
+
+	topBorder = ' ' + pixels
+		.map(() => '__')
+		.join('') + '\n'
+
+	bottomBorder = ' ' + pixels
+		.map(() => '--')
+		.join('')  + '\n'
+
+	imageString = pixels
+		.map((row, y) => {
+			let label = '',
+				pixelString = ''
+
+			if (printLabels)
+				label = labelize(y) + '  '
+
+			pixelString = row
 				.map(pixel => (pixel === 0) ? '  ' : '█▌')
-				.join('') +
-			'|'
-		)
-		.join('\n')
+				.join('')
+
+			return `${label}|${pixelString}|`
+		})
+		.join('\n') + '\n'
+
+
+	return offset + xLabels +
+		offset + topBorder +
+		imageString +
+		offset + bottomBorder
 }
 
 export function render (
@@ -21,7 +69,7 @@ export function render (
 	) {
 
 	if (scale === 1) {
-		return stringifyPixels(pixels)
+		return stringifyPixels({pixels})
 	}
 	else if (scale === 0.5) {
 
