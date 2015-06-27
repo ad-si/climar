@@ -1,10 +1,28 @@
-let isEven = require('is-even')
+let isEven = require('is-even'),
+	colors = require('ansi-256-colors')
 
+function mute (string) {
+	return colors.fg.bright[0] +
+		string + colors.reset
+}
 
 function labelize (number) {
-	return String(number)
-		.split('')
-		.pop()
+	let labelString = '',
+		numberString = String(number),
+		onesDigitString = numberString
+			.split('')
+			.pop()
+
+	if (onesDigitString === '0')
+		labelString +=
+			colors.fg.standard[2] +
+			numberString[0]
+	else
+		labelString +=
+			colors.fg.bright[0] +
+			onesDigitString
+
+	return labelString + colors.reset
 }
 
 function stringifyPixels (
@@ -30,13 +48,17 @@ function stringifyPixels (
 			.join('')  + '\n'
 	}
 
-	topBorder = ' ' + pixels
+	topBorder = mute(
+		' ' + pixels
 		.map(() => '__')
 		.join('') + '\n'
+	)
 
-	bottomBorder = ' ' + pixels
+	bottomBorder = mute(
+		' ' + pixels
 		.map(() => '--')
 		.join('')  + '\n'
+	)
 
 	imageString = pixels
 		.map((row, y) => {
@@ -50,7 +72,7 @@ function stringifyPixels (
 				.map(pixel => (pixel === 0) ? '  ' : '█▌')
 				.join('')
 
-			return `${label}|${pixelString}|`
+			return `${label}${mute('|')}${pixelString}${mute('|')}`
 		})
 		.join('\n') + '\n'
 
