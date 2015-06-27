@@ -6,7 +6,7 @@ function stringifyPixels (pixels) {
 		.map(row =>
 			'| ' +
 			row
-				.map(pixel => (pixel === 0) ? '  ' : '█ ')
+				.map(pixel => (pixel === 0) ? '  ' : '█▌')
 				.join('') +
 			'|'
 		)
