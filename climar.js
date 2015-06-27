@@ -1,12 +1,13 @@
 let isEven = require('is-even'),
 	colors = require('ansi-256-colors')
 
-function mute (string) {
-	return colors.fg.bright[0] +
-		string + colors.reset
+function mute (string, colorize) {
+	return (colorize ? colors.fg.bright[0] : '') +
+		string +
+		(colorize ? colors.reset : '')
 }
 
-function labelize (number) {
+function labelize (number, colorize) {
 	let labelString = '',
 		numberString = String(number),
 		onesDigitString = numberString
@@ -15,20 +16,22 @@ function labelize (number) {
 
 	if (onesDigitString === '0')
 		labelString +=
-			colors.fg.standard[2] +
+			(colorize ? colors.fg.standard[2] : '') +
 			numberString[0]
 	else
 		labelString +=
-			colors.fg.bright[0] +
+			(colorize ? colors.fg.bright[0] : '') +
 			onesDigitString
 
-	return labelString + colors.reset
+	return labelString +
+		(colorize ? colors.reset : '')
 }
 
 function stringifyPixels (
 		{
 			pixels = [],
-			printLabels = true
+			printLabels = true,
+			colorize = true
 		} = {}
 	) {
 
@@ -44,7 +47,7 @@ function stringifyPixels (
 		offset = '   '
 
 		xLabels = ' ' + pixels
-			.map((row, index) => labelize(index) + ' ')
+			.map((row, index) => labelize(index, colorize) + ' ')
 			.join('')  + '\n'
 	}
 
@@ -52,12 +55,14 @@ function stringifyPixels (
 		' ' + pixels
 		.map(() => '__')
 		.join('') + '\n'
+		, colorize
 	)
 
 	bottomBorder = mute(
 		' ' + pixels
 		.map(() => '--')
 		.join('')  + '\n'
+		, colorize
 	)
 
 	imageString = pixels
@@ -66,13 +71,16 @@ function stringifyPixels (
 				pixelString = ''
 
 			if (printLabels)
-				label = labelize(y) + '  '
+				label = labelize(y, colorize) + '  '
 
 			pixelString = row
 				.map(pixel => (pixel === 0) ? '  ' : '█▌')
 				.join('')
 
-			return `${label}${mute('|')}${pixelString}${mute('|')}`
+			return label +
+				mute('|', colorize) +
+				pixelString +
+				mute('|', colorize)
 		})
 		.join('\n') + '\n'
 
@@ -212,12 +220,16 @@ function createHighResolutionPixelString (
 export function render (
 		{
 			pixels = [],
-			scale = 1
+			scale = 1,
+			colorize = true
 		} = {}
 	) {
 
 	if (scale === 1) {
-		return stringifyPixels({pixels})
+		return stringifyPixels({
+			pixels,
+			colorize
+		})
 	}
 	else if (scale === 0.5) {
 		return createHighResolutionPixelString({pixels})
