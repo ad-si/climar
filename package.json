@@ -6,7 +6,9 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "babel-node test/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adius/climar.git"
