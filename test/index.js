@@ -5,7 +5,7 @@ import {expect} from 'chai'
 
 mocha.describe('Climar', () => {
 
-	it('Renders a 4x4 black & white image', () => {
+	it('Renders a 4x4 black & transparent image', () => {
 		let pixels = [
 			[0xffffffff, 0, 0, 0],
 			[0, 0xffffffff, 0, 0],
