@@ -3,8 +3,8 @@ import mocha from 'mocha'
 import {expect} from 'chai'
 
 
-mocha.describe('Climar', () => {
 
+describe('Climar', () => {
 	it('Renders a 4x4 black & transparent image', () => {
 		let pixels = [
 			[0xffffffff, 0, 0, 0],
