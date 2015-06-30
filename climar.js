@@ -47,8 +47,8 @@ function stringifyPixels (
 		offset = '   '
 
 		xLabels = ' ' + pixels
-			.map((row, index) => labelize(index, colorize) + ' ')
-			.join('')  + '\n'
+			.map((row, index) => labelize(index, colorize))
+			.join(' ')  + '\n'
 	}
 
 	topBorder = mute(
