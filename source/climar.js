@@ -78,7 +78,10 @@ function stringifyPixels (
 				label = labelize(y, colorize) + '  '
 
 			pixelString = row
-				.map(pixel => (pixel === 0) ? '  ' : '█▌')
+				.map(pixelColor => alphaToBlockElement(
+						numberToRgba(pixelColor).a
+					)
+				)
 				.join('')
 
 			return label +
