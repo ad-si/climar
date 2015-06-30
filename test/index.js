@@ -1,7 +1,7 @@
-import {render} from '../climar'
 import mocha from 'mocha'
 import {expect} from 'chai'
 
+import {render} from '../source/climar'
 
 
 describe('Climar', () => {
