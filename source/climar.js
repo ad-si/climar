@@ -1,6 +1,9 @@
 import isEven from 'is-even'
 import colors from 'ansi-256-colors'
 
+import numberToRgba from './numberToRgba'
+import alphaToBlockElement from './alphaToBlockElement'
+
 
 function mute (string, colorize) {
 	return (colorize ? colors.fg.bright[0] : '') +
