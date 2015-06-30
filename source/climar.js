@@ -1,5 +1,6 @@
-let isEven = require('is-even'),
-	colors = require('ansi-256-colors')
+import isEven from 'is-even'
+import colors from 'ansi-256-colors'
+
 
 function mute (string, colorize) {
 	return (colorize ? colors.fg.bright[0] : '') +
