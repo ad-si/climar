@@ -2,7 +2,8 @@
   "name": "climar",
   "version": "0.1.0",
   "description": "The command line image renderer",
-  "main": "climar.js",
+  "main": "./source/climar.js",
+  "bin": "./source/cli.js",
   "directories": {
     "test": "test"
   },
@@ -31,6 +32,8 @@
   },
   "dependencies": {
     "ansi-256-colors": "^1.1.0",
-    "is-even": "^0.1.1"
+    "is-even": "^0.1.1",
+    "png-js": "^0.1.1",
+    "yargs": "^3.14.0"
   }
 }
