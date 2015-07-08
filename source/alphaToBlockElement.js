@@ -7,11 +7,11 @@ export default function (alphaValue) {
 		return '  '
 
 	else if (alphaValue > 0xaa)
-		return '▓▌'
+		return '▓▓'
 
 	else if (alphaValue > 0x55)
-		return '▒▌'
+		return '▒▒'
 
 	else
-		return '░▌'
+		return '░░'
 }
