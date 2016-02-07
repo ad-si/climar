@@ -1,4 +1,3 @@
-import mocha from 'mocha'
 import {expect} from 'chai'
 
 import {render} from '../source/climar'
@@ -46,9 +45,9 @@ describe('Climar', () => {
 			'    0 1 2 3\n' +
 			'    ________\n' +
 			'0  |█▌      |\n' +
-			'1  |  ▓▌    |\n' +
-			'2  |    ▒▌  |\n' +
-			'3  |      ░▌|\n' +
+			'1  |  ▓▓    |\n' +
+			'2  |    ▒▒  |\n' +
+			'3  |      ░░|\n' +
 			'    --------\n'
 		)
 	})
