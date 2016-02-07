@@ -1,4 +1,3 @@
-import isEven from 'is-even'
 import colors from 'ansi-256-colors'
 
 import numberToRgba from './numberToRgba'

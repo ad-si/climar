@@ -1,3 +1,5 @@
+import isEven from 'is-even'
+
 export default function (
 		{
 			pixels = [],
