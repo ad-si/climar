@@ -8,33 +8,54 @@ import {render} from './climar'
 import rgbaToNumber from './rgbaToNumber'
 
 
-var argv = yargs
-	.demand(1)
-	.argv
+export default function (cliArguments) {
 
-var png = new Png(fs.readFileSync(argv._[0]))
+	yargs.parse(cliArguments)
 
-png.decode(function (pixels) {
+	const argv = yargs
+		.usage('Usage: $0 [options] <file-to-render>')
+		.demand(1, 'A file to be rendered must be specified!')
+		.options({
+			'scale': {
+				default: 1,
+				choices: [0.5, 1],
+				alias: 's',
+				describe: 'Scale the size of a pixel',
+				type: 'number',
+			},
+			'colorize': {
+				default: true,
+				alias: 'c',
+				describe: 'Render the image in color (turned of in TTYs)',
+				type: 'boolean',
+			}
+		})
+		.argv
 
-	var options = {
-		scale: argv.scale,
-		colorize: process.stdout.isTTY ? argv.colorize : false,
-		pixels: new Array(png.height)
-			.fill()
-			.map(row => new Array(png.width).fill(0))
-			.map((row, y) =>
-				row.map((element, x) => {
-					let pixelStart = ((y * png.width) + x) * 4
+	const png = new Png(fs.readFileSync(argv._[0]))
 
-					return rgbaToNumber(
-						pixels[pixelStart],
-						pixels[pixelStart + 1],
-						pixels[pixelStart + 2],
-						pixels[pixelStart + 3]
-					)
-				})
-			)
-	}
+	png.decode(function (pixels) {
 
-	console.log(render(options))
-})
+		var options = {
+			scale: argv.scale,
+			colorize: process.stdout.isTTY ? argv.colorize : false,
+			pixels: new Array(png.height)
+				.fill()
+				.map(row => new Array(png.width).fill(0))
+				.map((row, y) =>
+					row.map((element, x) => {
+						let pixelStart = ((y * png.width) + x) * 4
+
+						return rgbaToNumber(
+							pixels[pixelStart],
+							pixels[pixelStart + 1],
+							pixels[pixelStart + 2],
+							pixels[pixelStart + 3]
+						)
+					})
+				)
+		}
+
+		console.log(render(options))
+	})
+}
