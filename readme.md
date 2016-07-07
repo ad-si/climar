@@ -24,3 +24,9 @@ Options:
 
 A file to be rendered must be specified!
 ```
+
+## Related
+
+- [Fabulous] - Print images, colors, and stylish text to the terminal with Python.
+
+[Fabulous]: https://jart.github.io/fabulous/
