@@ -28,5 +28,7 @@ A file to be rendered must be specified!
 ## Related
 
 - [Fabulous] - Print images, colors, and stylish text to the terminal with Python.
+- [TerminalImageViewer] - Java program to display images in a terminal using RGB ANSI codes and unicode block characters.
 
 [Fabulous]: https://jart.github.io/fabulous/
+[TerminalImageViewer]: https://github.com/stefanhaustein/TerminalImageViewer
