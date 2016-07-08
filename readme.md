@@ -32,8 +32,10 @@ Extensive overview: [xkyle.com comparison of image to ascii conversion tools
 
 - [Drawille] - Pixel graphics in terminal with unicode braille characters.
 - [Fabulous] - Print images, colors, and stylish text to the terminal with Python.
+- [Pxl] - Go tool to display images in the terminal.
 - [TerminalImageViewer] - Java program to display images in a terminal using RGB ANSI codes and unicode block characters.
 
 [Drawille]: https://github.com/asciimoo/drawille
-[Fabulous]: https://jart.github.io/fabulous/
+[Fabulous]: https://jart.github.io/fabulous
+[Pxl]: https://github.com/ichinaski/pxl
 [TerminalImageViewer]: https://github.com/stefanhaustein/TerminalImageViewer
