@@ -25,18 +25,21 @@ Options:
 A file to be rendered must be specified!
 ```
 
+
 ## Related
 
 Extensive overview:
 [A Comparison of Image to ASCII Conversion Tools](
   https://www.xkyle.com/A-Comparison-of-Image-to-ASCII-Conversion-Tools/)
 
+- [catpix] - Printing images in the terminal with 9 lines of Ruby.
 - [Drawille] - Pixel graphics in terminal with unicode braille characters.
 - [Fabulous] - Print images, colors, and stylish text to the terminal with Python.
 - [Pxl] - Go tool to display images in the terminal.
 - [TerminalImageViewer] - Java program to display images in a terminal using RGB ANSI codes and unicode block characters.
 - [Viu] - Terminal image viewer with native support for iTerm and Kitty.
 
+[catpix]: https://radek.io/posts/catpix/
 [Drawille]: https://github.com/asciimoo/drawille
 [Fabulous]: https://jart.github.io/fabulous
 [Pxl]: https://github.com/ichinaski/pxl

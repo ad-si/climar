@@ -103,18 +103,19 @@ function stringifyPixels (
 export function render (
 		{
 			pixels = [],
+			highResolution = false,
 			scale = 1,
 			colorize = true
 		} = {}
 	) {
 
-	if (scale === 1) {
+	if (highResolution) {
+		return highResolutionRenderer({pixels})
+	}
+	else {
 		return stringifyPixels({
 			pixels,
 			colorize
 		})
-	}
-	else if (scale === 0.5) {
-		return highResolutionRenderer({pixels})
 	}
 }

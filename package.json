@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "ansi-256-colors": "^1.1.0",
+    "drawille": "^1.1.0",
     "is-even": "^0.1.1",
     "png-js": "^0.1.1",
     "yargs": "^3.32.0"
